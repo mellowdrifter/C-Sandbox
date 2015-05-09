@@ -77,12 +77,12 @@ void insertNode(node* cur, int match) {
 
 void deleteNode(node* cur, int match) {
 
+    // We need to keep note of previous node
+    // otherwise we cannot reconnect it!
+    node* previous = cur;
+
     // Traverse through linked list to find value
     while (cur->next != NULL) {
-    
-        // We need to keep note of previous node
-        // otherwise we cannot reconnect it!
-        node* previous = cur;
         
         // We've found the node we're looking for
         if (cur->number == match) {
@@ -98,6 +98,7 @@ void deleteNode(node* cur, int match) {
         }
         
         // Otherwise keep going through the list
+        previous = cur;
         cur = cur->next;
     }
 }
