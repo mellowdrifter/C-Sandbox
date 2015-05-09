@@ -114,6 +114,12 @@ void deleteNode(node* cur, int match) {
 
 void deleteList(node* cur) {
 
+    // When we exit the app, we need to clean up RAM allocations
+    // by traversing the list and deleting each node.
+    // It's essential to have a copy kept of the node because
+    // as soon as you delete it, you lose the pointer to the
+    // next node!
+
     // Traverse through linked list
     while (cur != NULL) {
         node* temp = cur;
