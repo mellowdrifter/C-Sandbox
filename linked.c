@@ -1,3 +1,13 @@
+/**
+ *  linked.c
+
+ *  Darren O'Connor
+ *  @mellowdrifter
+ *  https://www.mellowd.co.uk/ccie
+ *
+ *  Learning how to create and manipulate linked lists
+ */
+ 
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -104,11 +114,6 @@ void deleteNode(node* cur, int match) {
 
 void deleteList(node* cur) {
 
-  /*  temp = node          # save node pointer.
-    node = node.next     # advance to next.
-    free temp            # free the saved one.
-    head = null              # finally, mark as empty list */
-
     // Traverse through linked list
     while (cur != NULL) {
         node* temp = cur;
@@ -176,5 +181,4 @@ int main(void) {
          }
                 
     } while (choice != 5);
-    exit(0);
 }
