@@ -89,12 +89,11 @@ void deleteNode(node* cur, int match) {
         
             // Set pointer of last node around this node to new node
             node* temp = cur->next;
+            free(cur); // Release node from RAM
             cur = previous;
             cur->next = temp;
             
             return;
-            
-            // Where to release the RAM?
         }
         
         // Otherwise keep going through the list
@@ -105,29 +104,24 @@ void deleteNode(node* cur, int match) {
         
 int main(void) {
 
-    // Create initial node
-    node node1;
+    // Root position of list
+    node* root = (node*) malloc(sizeof(node));
     
     // Get initial value from user
     printf("Please enter inital node value: ");
-    scanf("%i", &node1.number);
+    scanf("%i", &root->number);
     
     // Initial node's next should be end of list
-    node1.next = NULL;
-    
-    // Root position of list
-    node* root = &node1;
+    root->next = NULL;
     
     // Use cur as a cursor to move around
     node* cur;
     
     // User controls what to do next
     int choice;
+    int match;
     do
     {
-        // better here instead of each switch
-        cur = root;
-        int match;
         printf("1 - Add new item to list\n");
         printf("2 - Print list\n");
         printf("3 - Insert node\n");
@@ -141,24 +135,29 @@ int main(void) {
                 return 0;
                 
             case 4:
+                cur = root;
                 printf("Which value should I delete? ");
                 scanf("%i", &match);
                 deleteNode(cur, match);
                 break;
                 
             case 3:
+                cur = root;
                 printf("After which value should I insert? ");
                 scanf("%i", &match);
                 insertNode(cur, match);
                 break;
 
             case 2:
+                cur = root;
                 printList(cur);
                 break;
                 
             case 1:
+                cur = root;
                 addNode(cur);
          }
                 
     } while (choice != 5);
+    exit(0);
 }
