@@ -101,6 +101,21 @@ void deleteNode(node* cur, int match) {
         cur = cur->next;
     }
 }
+
+void deleteList(node* cur) {
+
+  /*  temp = node          # save node pointer.
+    node = node.next     # advance to next.
+    free temp            # free the saved one.
+    head = null              # finally, mark as empty list */
+
+    // Traverse through linked list
+    while (cur != NULL) {
+        node* temp = cur;
+        cur = cur->next;
+        free (temp);
+    }
+}
         
 int main(void) {
 
@@ -132,6 +147,8 @@ int main(void) {
         
         switch (choice) {
             case 5:
+                cur = root;
+                deleteList(cur);
                 return 0;
                 
             case 4:
